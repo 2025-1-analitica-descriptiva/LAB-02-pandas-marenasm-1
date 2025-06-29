@@ -15,3 +15,11 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
+    import pandas as pd
+
+    df = pd.read_csv('files/input/tbl1.tsv', sep='\t')
+
+    # Contar la cantidad de registros por cada letra de la columna `c4`
+    cantidad_registros = df['c4'].str.upper().value_counts().sort_index()
+
+    return cantidad_registros.index.tolist()

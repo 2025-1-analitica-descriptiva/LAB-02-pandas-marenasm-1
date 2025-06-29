@@ -23,3 +23,13 @@ def pregunta_09():
     39  39  E   5  1998-01-26  1998
 
     """
+    import pandas as pd
+
+    df = pd.read_csv('files/input/tbl0.tsv', sep='\t')
+
+    # Convertir la columna `c3` a tipo datetime y extraer el año, no deja por que hay una fecha no valida
+    #df['year'] = pd.to_datetime(df['c3'], yearfirst=True, errors='coerce').dt.year.astype('Int64').astype(str)  
+    # Extraer el año directamente de la cadena de texto
+    df['year'] = df['c3'].str.slice(0, 4)
+
+    return df

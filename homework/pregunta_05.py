@@ -20,3 +20,11 @@ def pregunta_05():
     E    9
     Name: c2, dtype: int64
     """
+    import pandas as pd
+
+    df = pd.read_csv('files/input/tbl0.tsv', sep='\t')
+
+    # Calcular el promedio de `c2` por cada letra de la `c1`
+    maximo_c2 = df.groupby('c1')['c2'].max()
+
+    return maximo_c2
